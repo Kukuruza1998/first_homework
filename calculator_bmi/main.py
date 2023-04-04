@@ -1,6 +1,6 @@
-a = input('Enter height(m): ')
+a = input('Enter height(cm): ')
 b = input('Enter weaght(kg): ')
-bmi = float(b) / float(a)**2
+bmi = float(b) / (float(a)*0.01)**2
 
 chart_bmi =  '========================'
 
