@@ -1,6 +1,15 @@
 BMI = float(input('Weight: ')) / float(input('Hight: '))**2 
 
 d = ['=', '=', '=', '=', '=', '=', '=', '=', '=', '=', '=', '=']
-d[round((round(BMI)-21)/3)] = '|'
+d[round((round(BMI)-17)/2)] = '|'
 
-print('BMI = '+str(round(BMI))+'\n20 '+''.join(d)+' 56')
+
+
+if round(BMI) < 16:
+  print('BMI is too small')
+
+elif round(BMI) < 40:
+  print(f"BMI = {round(BMI)} \n16 {''.join(d)} 40")
+
+else:
+  print('BMI is too big')
