@@ -5,7 +5,7 @@ bmi = float(b) / (float(a)*0.01)**2
 chart_bmi =  '========================'
 
 
-if 16 > round(bmi):
+if 16 >= round(bmi):
   print('BMI is too small')
 
 elif round(bmi) < 40:
