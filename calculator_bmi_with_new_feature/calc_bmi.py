@@ -8,8 +8,8 @@ while (value_infinite_loop):
     break
 
   else:
-    person_gender = input('Enter ur gender (male/female): ').lower()
-    person_age = (input('Enter ur age: '))
+    person_gender = input('Enter your gender (male/female): ').lower()
+    person_age = (input('Enter your age: '))
     bmi = float(input('Enter weaght(kg): ')) /\
           (float(input('Enter height(cm): '))*0.01)**2 
     chart_bmi =  '========================'
@@ -23,7 +23,7 @@ while (value_infinite_loop):
         li[round(bmi) - 17] = '|'
 
         if person_gender == 'male' or person_gender == 'female':
-          if person_age.isdigit():
+          if person_age.isdigit() and int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
@@ -37,7 +37,7 @@ while (value_infinite_loop):
 
             """  """
         else:
-          if person_age.isdigit():
+          if person_age.isdigit() and int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
