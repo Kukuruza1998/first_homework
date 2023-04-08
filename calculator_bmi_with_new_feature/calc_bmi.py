@@ -1,5 +1,3 @@
-""" пол, вес, возраст. Выводим рекомендации в зависимости от bmi """
-
 value_infinite_loop = True
 
 while (value_infinite_loop):
@@ -18,12 +16,191 @@ while (value_infinite_loop):
     if 16 >= round(bmi):
       print('BMI is too small'+"\n")
 
-    elif round(bmi) < 40:
+# Slim male
+    elif round(bmi) > 16 and round(bmi) < 25: 
         li = list(chart_bmi)
         li[round(bmi) - 17] = '|'
 
-        if person_gender == 'male' or person_gender == 'female':
+        if person_gender == 'male':
           if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+          
+          else:
+            print(f"\nGender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+        else:
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+          else:
+            print(f"\nBMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale') 
+
+# Plump male
+    elif round(bmi) > 24 and round(bmi) < 33:
+        li = list(chart_bmi)
+        li[round(bmi) - 17] = '|'
+
+        if person_gender == 'male':
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          
+          else:
+            print(f"\nGender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+        else:
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          else:
+            print(f"\nBMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+
+# Fatty male
+    elif round(bmi) > 32 and round(bmi) < 40:
+        li = list(chart_bmi)
+        li[round(bmi) - 17] = '|'
+
+        if person_gender == 'male':
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          elif person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          else:
+            print(f"\nGender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+        else:
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          else:
+            print(f"\nBMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+
+# Slim female
+    elif round(bmi) > 16 and round(bmi) < 25: 
+        li = list(chart_bmi)
+        li[round(bmi) - 17] = '|'
+
+        if person_gender == 'female':
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+          
+          else:
+            print(f"\nGender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+        else:
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale')
+          else:
+            print(f"\nBMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            print('\nNormale, normale') 
+
+# Plump female
+    elif round(bmi) > 24 and round(bmi) < 33:
+        li = list(chart_bmi)
+        li[round(bmi) - 17] = '|'
+
+        if person_gender == 'female':
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          
+          else:
+            print(f"\nGender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+        else:
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          else:
+            print(f"\nBMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+
+# Fatty female
+    elif round(bmi) > 32 and round(bmi) < 40:
+        li = list(chart_bmi)
+        li[round(bmi) - 17] = '|'
+
+        if person_gender == 'female':
+          if person_age.isdigit() and int(person_age) < 123:
+            print(f"\nAge = {person_age}")  
+            print(f"Gender = {person_gender}")
+            print(f"BMI = {round(bmi)}")
+            print(f"16{''.join(li)}40")
+
+            """  """
+          elif person_age.isdigit() and int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
