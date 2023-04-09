@@ -2,7 +2,7 @@ A = [ int(input(f"Напишите {i+1} значение: ")) for i in range(3)
 print(f"Наши значения: {A}")
 
 # №1  
-print(A[0]and A[1]and A[2] and "Нет нулевых значений!!!")
+print(A[0] and A[1] and A[2] and "Нет нулевых значений!!!")
 
 # №2
 print(A[0] or A[1] or A[2] or "Введены все нули!")
