@@ -17,7 +17,7 @@ while (value_infinite_loop):
       print('BMI is too small'+"\n")
 
 # Slim male/female
-    elif round(bmi) > 16 and round(bmi) < 25: 
+    elif 16 < round(bmi) < 25: 
         li = list(chart_bmi)
         li[round(bmi) - 17] = '|'
 
@@ -28,16 +28,16 @@ while (value_infinite_loop):
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print("\nYour BMI in normal position for before 55 male year")
+            print("\nYour BMI in normal position for male under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print('\nYour BMI in normal position for after 55 male year')
+            print('\nYour BMI in normal position for male over 55')
 
           else:
             print(f"\nGender = {person_gender}")
@@ -53,16 +53,16 @@ while (value_infinite_loop):
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print("\nYour BMI in normal position for before 55 female year")
+            print("\nYour BMI in normal position for female under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print('\nYour BMI in normal position for after 55 female year')
+            print('\nYour BMI in normal position for female over 55')
 
           else:
             print(f"\nGender = {person_gender}")
@@ -77,15 +77,15 @@ while (value_infinite_loop):
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print('\nYour BMI in normal position for before 55 year')
+            print('\nYour BMI in normal position for under 55 year')
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
 
-            print('\nYour BMI in normal position for after 55 year')
+            print('\nYour BMI in normal position for over 55 year')
 
           else:
             print(f"\nBMI = {round(bmi)}")
@@ -94,7 +94,7 @@ while (value_infinite_loop):
             print('\nYour BMI in normal position') 
 
 # Plump male/female
-    elif round(bmi) > 24 and round(bmi) < 33: 
+    elif 24 < round(bmi) < 33: 
         li = list(chart_bmi)
         li[round(bmi) - 17] = '|'
 
@@ -108,7 +108,7 @@ while (value_infinite_loop):
             print("\nYour BMI is elevated for male under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
@@ -133,7 +133,7 @@ while (value_infinite_loop):
             print("\nYour BMI is elevated for female under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
@@ -157,7 +157,7 @@ while (value_infinite_loop):
             print('\nYour BMI is elevated for under 55')
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
@@ -171,7 +171,7 @@ while (value_infinite_loop):
             print('\nYour BMI is elevated') 
 
 # Fatty male/female
-    elif round(bmi) > 32 and round(bmi) < 40: 
+    elif 32 < round(bmi) < 40: 
         li = list(chart_bmi)
         li[round(bmi) - 17] = '|'
 
@@ -185,7 +185,7 @@ while (value_infinite_loop):
             print("\nYour BMI is critical for male under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
@@ -210,7 +210,7 @@ while (value_infinite_loop):
             print("\nYour BMI is critical for female under 55")
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"Gender = {person_gender}")
             print(f"BMI = {round(bmi)}")
@@ -234,7 +234,7 @@ while (value_infinite_loop):
             print('\nYour BMI is critical for under 55')
           
           elif person_age.isdigit() \
-                and int(person_age) > 55 and int(person_age) < 123:
+                and 55 < int(person_age) < 123:
             print(f"\nAge = {person_age}")  
             print(f"BMI = {round(bmi)}")
             print(f"16{''.join(li)}40")
