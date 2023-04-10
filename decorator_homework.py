@@ -7,20 +7,18 @@ def decorator(func):
     return wrapper_decorator
 
 @decorator
-def adds(b = 0):
-    a = random.randint(0, 10000)
-    if b != 0:
-      print(f"Сумма до пополнения: ${a}")
+def adds(a, b = 0):
     return a + b
 
 os.system('CLS')
 login_person = input('Введите свой логин: ').lower()
-
+total_money = random.randint(0, 10000)
 if (login_person == 'admin'):
     money = input("Введите сумму, которую хотели бы положить на счёт: $")
     if money != "" and money.isdigit():
-      print(adds(int(money)))
+      print(f"Сумма до пополнения: ${total_money}")
+      print(adds(int(money), total_money))
     else:
-      print(adds())   
+      print(adds(total_money))   
 else:
     print('Доступ запрещен')
