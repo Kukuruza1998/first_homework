@@ -71,7 +71,33 @@ while(True):
         break
     
   elif choice.isdigit() and int(choice) == 3:
-      choice_3()
+    clear_terminal()
+    if _state=={}:
+        pass
+    else:
+      for key,value in _state.items():
+        pprint.pprint(value['login'])
+      
+      while True:
+        login_to_valid = input('Введите логин пользователя, которого хотите изменить: ')
+        for key,value in _state.items():
+          
+          if login_to_valid!=value['login']:
+            clear_terminal()
+            print(f"Пользователя c таким логином не существует \n")
+            continue
+          else:
+            clear_terminal()
+            pprint.pprint(value)
+            change_parameter = \
+              input('Введите название ключа которое хотите изменить: ')
+            for x in value:
+              if change_parameter==x:
+                 value[x]=input('Введите значение: ')
+            clear_terminal()
+          break  
+        
+        break
 
   elif choice.isdigit() and int(choice) == 4:
     clear_terminal()
