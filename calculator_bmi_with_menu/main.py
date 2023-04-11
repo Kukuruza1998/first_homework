@@ -9,15 +9,15 @@ menu = {
      6:'Выход',
  }
 
+def clear_terminal():
+    return os.system('CLS')
+
 def print_menu():
      for key in menu.keys():
         print(f"{key}. {menu[key]}")
 
 def show_history(state):      
       return state      
-
-def choice_2():
-      print('Посмотреть информацию о пользователе(рост, вес, ИМТ)')
 
 def choice_3():
       print('Изменить данные о пользователе')      
@@ -28,37 +28,98 @@ def choice_4():
 def calculator_bmi(weight, height):
       return round(float(weight)/((float(height)*0.01)**2))      
 
-os.system('CLS')
+clear_terminal()
 _state={}
 id=0
+
+
 while(True):
-  _weight,_height,_gender,_age=70,190,"male",24
   print_menu()
-  choice = int(input(f"\n Ваш выбор: "))
-  if choice == 1:
-      os.system('CLS')
-      pprint.pprint(show_history(_state))
-      print()
-  elif choice == 2:
-      choice_2()
-  elif choice == 3:
+  choice = input(f"\n Ваш выбор: ")
+
+  if choice.isdigit() and int(choice) == 1:
+      clear_terminal()
+      if _state !={}:
+        for value in _state.values():
+          pprint.pprint(f"Пользователь: {value['login']}")   
+      else:
+        print()
+      
+
+  elif choice.isdigit() and int(choice) == 2:
+    clear_terminal()
+    if _state=={}:
+        pass
+    else:
+      for key,value in _state.items():
+        pprint.pprint(value['login'])
+      
+      while True:
+        login_to_valid = input('Введите логин пользователя, которого хотите просмотреть:')
+        for key,value in _state.items():
+          
+          if login_to_valid!=value['login']:
+            clear_terminal()
+            print(f"Пользователя c таким логином не существует \n")
+            continue
+          else:
+            clear_terminal()
+            pprint.pprint(value)
+            print()
+          break  
+        
+        break
+    
+  elif choice.isdigit() and int(choice) == 3:
       choice_3()
-  elif choice == 4:
-      choice_4()
-  elif choice == 5:
+
+  elif choice.isdigit() and int(choice) == 4:
+    clear_terminal()
+    if _state=={}:
+        pass
+    else:
+      for key,value in _state.items():
+        pprint.pprint(value['login'])
+      
+      while True:
+        login_to_valid = input('Введите логин пользователя, которого хотите удалить:')
+        for key,value in _state.items():
+          
+          if login_to_valid!=value['login']:
+            clear_terminal()
+            print(f"Пользователя c таким логином не существует \n")
+            continue
+          else:
+            clear_terminal()
+            del _state[key]
+            print()
+          break  
+        
+        break
+
+  elif choice.isdigit() and int(choice) == 5:
+    clear_terminal()
+    _login = input(f"Введите логин пользователя: ")
+    _weight = input(f"Введите вес пользователя(кг): ")
+    _height = input(f"Введите рост пользователя(см): ")
+    _gender = input(f"Введите пол пользователя: ")
+    _age = input(f"Введите возраст пользователя: ")
     _state[id]={
-        'weight':_weight,
-        'height':_height,
-        'gender':_gender,
-        'age':_age,
-        'bmi':(calculator_bmi(_weight,_height))
-        }
-    id+=1
-    os.system('CLS')
-  elif choice == 6:
-      break
+    'login':_login,
+    'weight':_weight,
+    'height':_height,
+    'gender':_gender,
+    'age':_age,
+    'bmi':(calculator_bmi(_weight,_height)),
+    }
+    id+=1  
+    clear_terminal()
+
+  elif choice.isdigit() and int(choice) == 6:
+      exit()
+  
   else:
-      os.system('CLS')
+      clear_terminal()
       print('Некорректный выбор!',end="\n"*2)
 
 
