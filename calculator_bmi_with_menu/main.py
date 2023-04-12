@@ -14,45 +14,16 @@ def clear_terminal():
 
 def print_menu():
      for key, value in MENU.items():
-        print(f"{key}. {MENU[key]}")
+        print(f"{key}. {MENU[key]}")       
 
-def show_history(state):      
-      return state         
+def print_all_login(state):
+      for key, value in state.items():  
+         if value['login'] is not None: 
+          print(f"Пользователь: {value['login']}")
 
-def calculation_bmi(weight, height):
-      return round(float(weight)/((float(height)*0.01)**2))      
-
-
-
-def main():
-  clear_terminal()
-  _state={}
-  id=0
-  while(True):
-    print_menu()
-    choice = input(f"\n Ваш выбор: ")
-
-    if choice.isdigit() and int(choice) == 1:
-        clear_terminal()
-        if _state !={}:
-          for value in _state.values():
-            pprint.pprint(f"Пользователь: {value['login']}")   
-        else:
-          print()
-
-    elif choice.isdigit() and int(choice) == 2:
-      clear_terminal()
-      if _state=={}:
-          pass
-      else:
-        for key,value in _state.items():
-          pprint.pprint(value['login'])
-        
-        while True:
-          login_to_valid = input('Введите логин пользователя, которого хотите просмотреть:')
-          for key,value in _state.items():
-            
-            if login_to_valid!=value['login']:
+def validation_print_choice_2(state, a):
+   for key,value in state.items():
+            if a!=value['login']:
               clear_terminal()
               print(f"Пользователя c таким логином не существует \n")
               continue
@@ -60,23 +31,11 @@ def main():
               clear_terminal()
               pprint.pprint(value)
               print()
-            break  
-          
-          break
-      
-    elif choice.isdigit() and int(choice) == 3:
-      clear_terminal()
-      if _state=={}:
-          pass
-      else:
-        for key,value in _state.items():
-          pprint.pprint(value['login'])
-        
-        while True:
-          login_to_valid = input('Введите логин пользователя, которого хотите изменить: ')
-          for key,value in _state.items():
-            
-            if login_to_valid!=value['login']:
+            break 
+
+def validation_change_choice_3(state, a):
+   for key,value in state.items():
+            if a!=value['login']:
               clear_terminal()
               print(f"Пользователя c таким логином не существует \n")
               continue
@@ -89,32 +48,70 @@ def main():
                 if change_parameter==x:
                   value[x]=input('Введите значение: ')
               clear_terminal()
-            break  
+            break            
+
+def validation_delete_choice_4(state, a):
+  for key,value in state.items():   
+    if a!=value['login']:
+      clear_terminal()
+      print(f"Пользователя c таким логином не существует \n")
+      continue
+    else:
+      clear_terminal()
+      del state[key]
+      print()
+    break
+
+def calculation_bmi(weight, height):
+      return round(float(weight)/((float(height)*0.01)**2))      
+
+def main():
+  clear_terminal()
+  _state={}
+  id=0
+
+  while(True):
+    print_menu()
+    choice = input(f"\n Ваш выбор: ")
+
+    if choice.isdigit() and int(choice) == 1:
+        clear_terminal()
+        if _state !={}:
+          print_all_login(_state)
           
+
+    elif choice.isdigit() and int(choice) == 2:
+      clear_terminal()
+      if _state=={}:
+        pass
+      else:
+        while True:
+          print_all_login(_state)
+          login_to_valid = input('Введите логин пользователя, которого хотите просмотреть:')
+          validation_print_choice_2(_state, login_to_valid)
           break
+      
+      
+    elif choice.isdigit() and int(choice) == 3:
+      clear_terminal()
+      if _state=={}:
+        pass
+      else:
+        while True:
+          print_all_login(_state)
+          login_to_valid = input('Введите логин пользователя, которого хотите изменить: ') 
+          validation_change_choice_3(_state, login_to_valid)
+          break   
 
     elif choice.isdigit() and int(choice) == 4:
       clear_terminal()
       if _state=={}:
-          pass
+        pass
       else:
-        for key,value in _state.items():
-          pprint.pprint(value['login'])
-        
         while True:
-          login_to_valid = input('Введите логин пользователя, которого хотите удалить:')
-          for key,value in _state.items():
-            
-            if login_to_valid!=value['login']:
-              clear_terminal()
-              print(f"Пользователя c таким логином не существует \n")
-              continue
-            else:
-              clear_terminal()
-              del _state[key]
-              print()
-            break  
-          
+          print_all_login(_state)
+          login_to_valid = input('Введите логин пользователя, которого хотите изменить: ')
+          validation_delete_choice_4(_state, login_to_valid) 
           break
 
     elif choice.isdigit() and int(choice) == 5:
@@ -142,7 +139,7 @@ def main():
         clear_terminal()
         print('Некорректный выбор!',end="\n"*2)
 
-if __name__=="__main__":
-  main()
+
+main()
 #сделать проверки на ввод, постараться сделать функции и декоратор. \
 # условно фор в функ а в декораторе выводить значеня красивыми или проверять key value
