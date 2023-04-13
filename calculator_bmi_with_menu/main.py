@@ -78,6 +78,7 @@ def main():
         clear_terminal()
         if _state !={}:
           print_all_login(_state)
+          print()
           
 
     elif choice.isdigit() and int(choice) == 2:
@@ -116,22 +117,76 @@ def main():
 
     elif choice.isdigit() and int(choice) == 5:
       clear_terminal()
+      
+      # while True:
+      #   _login = input(f"Введите логин пользователя: ")
+      #   if _login =="":
+      #     print("Некорректный ввод логина!")
+      #   else:
+      #     _gender = input(f"Введите пол пользователя: ")
+      #     if _gender.lower != "male" and _gender.lower != "female":
+      #       print("Некорректный ввод пола!")
+      #     else:
+      #       _age = input(f"Введите возраст пользователя: ") 
+      #       if (not _age.isdigit()) and not _age.isdigit()>100:
+      #         print("Некорректный ввод возроста!")
+      #       else:
+      #         _height = input(f"Введите рост пользователя(см): ")
+      #         if not _height.isdigit() or _height == "":
+      #           print("Некорректный ввод роста!")
+      #         else:
+      #             _weight = input(f"Введите вес пользователя(кг): ")
+      #             if not _weight.isdigit() or _weight == "":
+      #               print("Некорректный ввод веса!")
+      #             else:
+      #               _state[id]={
+      #               'login':_login,
+      #               'weight':_weight,
+      #               'height':_height,
+      #               'gender':_gender,
+      #               'age':_age,
+      #               'bmi':(calculation_bmi(_weight,_height)),
+      #               }
+      #               id+=1  
+      #               clear_terminal() 
+      #               break
       _login = input(f"Введите логин пользователя: ")
-      _weight = input(f"Введите вес пользователя(кг): ")
-      _height = input(f"Введите рост пользователя(см): ")
-      _gender = input(f"Введите пол пользователя: ")
-      _age = input(f"Введите возраст пользователя: ")
-      _state[id]={
-      'login':_login,
-      'weight':_weight,
-      'height':_height,
-      'gender':_gender,
-      'age':_age,
-      'bmi':(calculation_bmi(_weight,_height)),
-      }
-      id+=1  
-      clear_terminal()
-
+      if not _login =="":
+        _gender = input(f"Введите пол пользователя: ")
+        if  _gender == 'male' or  _gender == 'female':
+          _age = input(f"Введите возраст пользователя: ") 
+          if _age.isdigit() and _age !="" and int(_age)<100:
+            _height = input(f"Введите рост пользователя(см): ")
+            if  _height.isdigit() and not _height == "": 
+              _weight = input(f"Введите вес пользователя(кг): ")
+              if  _weight.isdigit() and not _weight == "":  
+                _state[id]={
+                          'login':_login,
+                          'weight':_weight,
+                          'height':_height,
+                          'gender':_gender,
+                          'age':_age,
+                          'bmi':(calculation_bmi(_weight,_height)),
+                          }
+                id+=1 
+                clear_terminal()
+                print("Некоректное заполнение данных", end='\n'*2)
+              else:
+                clear_terminal() 
+                print("Некоректное заполнение данных", end='\n'*2)
+            else:
+              clear_terminal()
+              print("Некоректное заполнение данных", end='\n'*2)
+          else:
+            clear_terminal()
+            print("Некоректное заполнение данных", end='\n'*2)
+        else:
+          clear_terminal()
+          print("Некоректное заполнение данных", end='\n'*2)
+      else:
+         clear_terminal()
+         print("Некоректное заполнение данных", end='\n'*2)                     
+        
     elif choice.isdigit() and int(choice) == 6:
         exit()
     
@@ -141,5 +196,6 @@ def main():
 
 
 main()
-#сделать проверки на ввод, постараться сделать функции и декоратор. \
-# условно фор в функ а в декораторе выводить значеня красивыми или проверять key value
+#сделать проверки на ввод веса, роста, по возможности сделать цикл нормальный 
+#при изменении роста или веса проверять на (число и не пустую строку), затем\
+#вызывать def calc_bmi и меня его тоже
