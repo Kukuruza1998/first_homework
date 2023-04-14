@@ -48,7 +48,8 @@ def validation_change_choice_3(state, a):
       for x in value:
         if change_parameter==x:
           value[x]=input('Введите значение: ')
-        clear_terminal()
+        
+      clear_terminal()
     break            
 
 def validation_delete_choice_4(state, a):
@@ -152,6 +153,7 @@ def main():
                   'age':_age,
                   'bmi':(calculation_bmi(_weight,_height)),
                 }
+            
                 id+=1 
                 clear_terminal()
                 print("Пользователь добавлен в список", end='\n'*2)
