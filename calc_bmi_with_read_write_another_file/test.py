@@ -1,20 +1,27 @@
 import os
 
-#печатает меню из другого файла
+#печатает меню из другого файла +
 def print_menu():
-  for i in open("/calc_bmi_with_read_write_another_file/menu.txt"):
+  file = open('calc_bmi_with_read_write_another_file/menu.txt', encoding='utf-8')
+  for i in file:
     print(i.strip())
+  file.close()  
 
-#очищаем терминал
+#очищаем терминал +
 def clear_screen():
   os.system('CLS')
 
-
-#проверяет что выбрал пользователь 1...6 или неверный ввод
+#проверяет что выбрал пользователь 1...6 или неверный ввод +
 def processing_user_choice_menu():
-  pass
+  a = input("Ваш выбор: ")
+  if a.isdigit():
+    a = int(a)
+    if 1 <= a <= 6:
+      return a
+  
+  print('Некорректный выбор!',end="\n"*2)
 
-#запускает функцию согласно выбору пользователя
+#запускает функцию согласно выбору пользователя +
 def start_func_for_menu_item(a):
   if a==1:
     print_all_id_user()
@@ -34,7 +41,10 @@ def start_func_for_menu_item(a):
 
 #печатает ид всех пользователей из стороннего файла
 def print_all_id_user():
-  pass
+  file = open('calc_bmi_with_read_write_another_file/person_info.txt', encoding='utf-8')
+  lines = file.readlines()
+  for i in lines:
+    print(file.read(3))
 
 #печатает полную информацию о данном пользователе из стороннего файла
 def print_info_about_user():
@@ -64,10 +74,9 @@ def exit_with_calc():
 
 def main():
   while True:
-    clear_screen()
-    print_menu()
-    processing_user_choice_menu()
-    start_func_for_menu_item()
+    clear_screen()#+
+    print_menu()#+
+    start_func_for_menu_item(processing_user_choice_menu())
     break
 
 
