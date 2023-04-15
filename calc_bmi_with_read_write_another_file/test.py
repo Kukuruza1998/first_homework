@@ -1,4 +1,4 @@
-import os, pprint
+import os
 
 #печатает меню из другого файла +
 def print_menu():
@@ -55,7 +55,6 @@ def print_all_id_user():
     print('Пользователей не зарегистрировано')
   print()     
  
-
 #печатает полную информацию о данном пользователе из стороннего файла -  если нет логина то "нет логина"
 def print_info_about_user():
   a = input('Введите логин пользователя, которого хотите посмотреть: ')
@@ -81,24 +80,29 @@ def change_ifno_about_user():
 def delete_selected_user():
   a = input('Введите логин пользователя, которого хотите удалить: ')
 
-  file = open('calc_bmi_with_read_write_another_file/person_info.txt','r+', encoding='utf-8')
+  file = open('calc_bmi_with_read_write_another_file/person_info.txt','r', encoding='utf-8')
   lines = file.readlines()
   a = f"1) Логин: {a}\n"
 
   for line in lines:
     if a == line:
-      x = 0
-      while x!=7:
-        print(lines[lines.index(line)+x]) 
-        x +=1
+      s = ''
+      _index = lines.index(line)
+      for i in range(_index, _index + 7):
+        lines[i] = s
+
+  file = open('calc_bmi_with_read_write_another_file/person_info.txt','w', encoding='utf-8')
+  file.writelines(lines)
+  file.close()
+
 	
 #очищает файл от пустых строк, после удаления+
-def remove_empty_str(a):
-  try:
-    while True:
-      a.remove('')
-  except ValueError:
-      pass    
+# def remove_empty_str(a):
+#   try:
+#     while True:
+#       a.remove('')
+#   except ValueError:
+#       pass    
 
 #добавляет пользователя в сторонний файл+
 def add_user_in_dict():
