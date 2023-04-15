@@ -1,4 +1,4 @@
-import os
+import os, pprint
 
 #печатает меню из другого файла +
 def print_menu():
@@ -18,7 +18,7 @@ def processing_user_choice_menu():
     a = int(a)
     if 1 <= a <= 6:
       return a
-  
+  clear_screen()
   print('Некорректный выбор!',end="\n"*2)
 
 #запускает функцию согласно выбору пользователя +
@@ -39,48 +39,108 @@ def start_func_for_menu_item(a):
   elif a==6:
     exit_with_calc()
 
-#печатает ид всех пользователей из стороннего файла
+#печатает ид всех пользователей из стороннего файла +
 def print_all_id_user():
   file = open('calc_bmi_with_read_write_another_file/person_info.txt', encoding='utf-8')
   lines = file.readlines()
+  count_lines = 0
+  clear_screen()
   for i in lines:
-    print(file.read(3))
+    if i[:2] == '1)':
+      print(f"Пользователь: {i[10:]}", end='')
+      count_lines += 1
 
-#печатает полную информацию о данном пользователе из стороннего файла
+  if count_lines == 0:
+    clear_screen()
+    print('Пользователей не зарегистрировано')
+  print()     
+ 
+
+#печатает полную информацию о данном пользователе из стороннего файла -  если нет логина то "нет логина"
 def print_info_about_user():
-  pass
+  a = input('Введите логин пользователя, которого хотите посмотреть: ')
 
+  file = open('calc_bmi_with_read_write_another_file/person_info.txt', encoding='utf-8')
+  lines = file.readlines()
+  a = f"1) Логин: {a}\n"
+  clear_screen()
+  for line in lines:
+    if a == line:
+      x = 0
+      while x!=6:
+        print(lines[lines.index(line)+x], end="")
+        x +=1
+      print()
+    
+    
 #изменение информации о выбранном пользователе в стороннем файле
 def change_ifno_about_user():
   pass
 
 #удаляет выбранного пользователя в стороннем файле
 def delete_selected_user():
-  pass
+  a = input('Введите логин пользователя, которого хотите удалить: ')
 
-#добавляет пользователя в сторонний файл
+  file = open('calc_bmi_with_read_write_another_file/person_info.txt','r+', encoding='utf-8')
+  lines = file.readlines()
+  a = f"1) Логин: {a}\n"
+
+  for line in lines:
+    if a == line:
+      x = 0
+      while x!=7:
+        print(lines[lines.index(line)+x]) 
+        x +=1
+	
+#очищает файл от пустых строк, после удаления+
+def remove_empty_str(a):
+  try:
+    while True:
+      a.remove('')
+  except ValueError:
+      pass    
+
+#добавляет пользователя в сторонний файл+
 def add_user_in_dict():
-  validation_input_info_about_user()
+  clear_screen()
+  _login = input(f"Введите логин пользователя(not ''): ")
+  _gender = input(f"Введите пол пользователя(male/female): ")
+  _age = input(f"Введите возраст пользователя(1...99): ") 
+  _height = input(f"Введите рост пользователя(1...250 см): ")
+  _weight = input(f"Введите вес пользователя(1...200 кг): ")
+  if validation_input_info_about_user\
+    (_login, _gender, _age, _height, _weight) == True:
 
-#проверяет правильность ввода информации о пользователе
-def validation_input_info_about_user():
-  pass
+    file = open('calc_bmi_with_read_write_another_file/person_info.txt','a', encoding='utf-8')
+    file.write(f"1) Логин: {_login}\n")
+    file.write(f"2) Пол: {_gender}\n")
+    file.write(f"3) Возраст: {_age}\n")
+    file.write(f"4) Рост: {_height}\n")
+    file.write(f"5) Вес: {_weight}\n")
+    file.write(f"6) ИМТ: {round(float(_weight)/((float(_height)*0.01)**2))}\n")
+    file.write("\n")
+    file.close()
+    clear_screen()
+  else:
+    print('Некоректное заполнение данных')
 
-#окончание работы калькулятора
+#проверяет правильность ввода информации о пользователе +
+def validation_input_info_about_user(a, b, c, d, e):
+  if not a =="":
+    if  b == 'male' or  b == 'female':
+      if c.isdigit() and c !="" and 0 < int(c) < 100:
+        if  d.isdigit() and 0 < int(d) < 251 and not d == "":  
+          if  e.isdigit() and 0 < int(e) < 201 and not e == "":
+            return True
+
+#окончание работы калькулятора+
 def exit_with_calc():
   exit()
 
-
-
 def main():
+  clear_screen()
   while True:
-    clear_screen()#+
-    print_menu()#+
+    print_menu()
     start_func_for_menu_item(processing_user_choice_menu())
-    break
-
-
-
-
-
+    
 main()
