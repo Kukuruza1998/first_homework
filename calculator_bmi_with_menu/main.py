@@ -60,7 +60,7 @@ def validation_delete_choice_4(state, a):
       continue
     else:
       clear_terminal()
-      print(f"Пользователь с логином '{state[key]}' удалён")
+      pprint.pprint(f"Пользователь с логином '{state[key]}' удалён")
       del state[key]
     break
 
