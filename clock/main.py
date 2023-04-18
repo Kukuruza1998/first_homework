@@ -1,6 +1,7 @@
 import time
 import os
 from datetime import datetime
+from colorama import init, Fore, Style
 
 from view_number import views
 
@@ -26,8 +27,18 @@ def combine_views(first, second):
     return result
 
 def main():
+    init()
+    COLORS_FOR_PRINT = [Fore.YELLOW, \
+                        Fore.BLUE, \
+                        Fore.GREEN, \
+                        Fore.MAGENTA, \
+                        Fore.WHITE,
+                        Fore.CYAN
+                        ]
     counter_position = 1
+    index_to_colors = 0
     while True:
+        color_print = COLORS_FOR_PRINT[index_to_colors]
         if counter_position == 6: 
           step = -1
         elif counter_position == 1:
@@ -47,8 +58,10 @@ def main():
                                views.NUMBER_TO_VIEW["position_square"]\
                                 [counter_position])
         result = combine_views(result, second_views)  
-        print(result)
+        print(color_print + result)
+
         counter_position += step
+        index_to_colors = (index_to_colors + 1) % len(COLORS_FOR_PRINT)
         time.sleep(1)
 
 if __name__ == '__main__':
