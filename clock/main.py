@@ -1,239 +1,72 @@
-from datetime  import datetime  
-import time, os
+import time
+import os
+from datetime import datetime
+
+from view_number import views
 
 
-one="""
-    ■■■   
-  ■■■■■   
-    ■■■   
-    ■■■   
-    ■■■   
-■■■■■■■■■■
-"""
+def clear_screen():
+    os.system("CLS")
 
-two="""
-  ■■■■■■  
-■■■    ■■■
-     ■■■■ 
-   ■■■■   
- ■■■■     
-■■■■■■■■■■
-"""
-
-three="""
-■■■■■■■■■■
-        ■■
-■■■■■■■■■■
-        ■■
-        ■■
-■■■■■■■■■■
-"""
-
-four="""
-■■      ■■
-■■      ■■
-■■■■■■■■■■
-        ■■
-        ■■
-        ■■
-"""
-
-five="""
-■■■■■■■■■■
-■■        
-■■■■■■■■■■
-        ■■
-        ■■
-■■■■■■■■■■
-"""
-
-six="""
-■■■■■■■■■■
-■■        
-■■■■■■■■■■
-■■      ■■
-■■      ■■
-■■■■■■■■■■
-"""
-
-seven="""
-■■■■■■■■■■
-        ■■
-      ■■■ 
-    ■■■   
-    ■■■   
-    ■■■   
-"""
-
-eight="""
-■■■■■■■■■■
-■■      ■■
-■■■■■■■■■■
-■■      ■■
-■■      ■■
-■■■■■■■■■■
-"""
-
-nine="""
-■■■■■■■■■■
-■■      ■■
-■■      ■■
-■■■■■■■■■■
-        ■■
-■■■■■■■■■■
-"""
-
-zero="""
-  ■■■■■■  
- ■■    ■■ 
-■■      ■■
-■■      ■■
- ■■    ■■ 
-  ■■■■■■  
-"""
-
-dot="""
-    ■■    
-    ■■    
-          
-          
-    ■■    
-    ■■    
-"""
-
-empty="""
-          
-          
-          
-          
-          
-          
-"""
-
-def print_time( a=two, b=four, d=one, e=zero, c=dot, f=empty):
-  result = ''
-  # print( a, b, d, e)
-  for line_a, line_b, line_c, line_d, line_e, line_f in zip(a.splitlines(), \
-                                                    b.splitlines(), \
-                                                    c.splitlines(), \
-                                                    d.splitlines(), \
-                                                    e.splitlines(), \
-                                                    f.splitlines()):
-    if counter % 5 == 0:
-      result += line_a + '  ' + line_b + '  ' + line_c + '  ' + line_d + '  ' + line_e + '\n'
+def get_view(number: str):
+    first = None
+    second = None
+    if len(number) == 1:
+        first = views.NUMBER_TO_VIEW["0"]
+        second = views.NUMBER_TO_VIEW[number]
     else:
-      result += line_a + '  ' + line_b + '  ' + line_f + '  ' + line_d + '  ' + line_e + '\n' 
-  print(result)
+        first = views.NUMBER_TO_VIEW[number[0]]
+        second = views.NUMBER_TO_VIEW[number[1]]
+    return combine_views(first, second)
 
+def combine_views(first, second):
+    combine_numbers = [f"{first_}  {second_}" for first_, second_ in zip\
+         (first.splitlines(), second.splitlines())]
+    result = "\n".join(i for i in combine_numbers)
+    return result
 
-counter = 1  
-def check_time(counter, time_now):
-  a = ''
-  b = ''
-  d = ''
-  e = ''
-  for i in time_now:
-    if int(i) == 0:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 1:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 2:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 3:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 4:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 5:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 6:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 7:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 8:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-    elif int(i) == 9:
-      if a == '':
-        a = i
-      elif b == '':
-        b = i
-      elif d == '':
-        d = i
-      elif e == '':
-        e = i
-  print_number( a, b, d, e)
-    
+if __name__ == '__main__':
+    counter = 1
+    while True:
+        clear_screen()
+        current_time = datetime.now().time()
+        hour_views = get_view(str(current_time.hour))
+        minute_views = get_view(str(current_time.minute))
+        second_views = get_view(str(current_time.second))
 
+        if counter % 4 == 0:
+          result = combine_views(hour_views, views.NUMBER_TO_VIEW[":"])
+          result = combine_views(result, minute_views)
+          result = combine_views(result, views.NUMBER_TO_VIEW[":"])
+          result = combine_views(result, second_views)
+          print(result)
+        else:
+          result = combine_views(hour_views, views.NUMBER_TO_VIEW["nothing"])
+          result = combine_views(result, minute_views)
+          result = combine_views(result, views.NUMBER_TO_VIEW["nothing"])
+          result = combine_views(result, second_views)
+          print(result)  
 
-
-
-while True:
-  pime = datetime.now()
-  os.system('CLS')
-  counter += 1
-  print(pime.strftime("%I:%M:%S%p"))
-  check_time(counter, pime.strftime("%M%S"))
-
-  time.sleep(1)
+        time.sleep(0.2)
+        counter += 1
+#
+# def print_time(a=two, b=four, d=one, e=zero, c=dot, f=empty):
+#     result = ""
+#     # print( a, b, d, e)
+#     for line_a, line_b, line_c, line_d, line_e, line_f in zip(
+#         a.splitlines(),
+#         b.splitlines(),
+#         c.splitlines(),
+#         d.splitlines(),
+#         e.splitlines(),
+#         f.splitlines(),
+#     ):
+#
+# while True:
+#     pime = datetime.now()
+#     os.system("clear")
+#     counter += 1
+#     print(pime.strftime("%I:%M:%S%p"))
+#     check_time(counter, pime.strftime("%M%S"))
+#
+#     time.sleep(1)
