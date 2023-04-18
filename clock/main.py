@@ -26,47 +26,28 @@ def combine_views(first, second):
     return result
 
 if __name__ == '__main__':
-    counter = 1
+    counter_position = 1
     while True:
+        if counter_position == 6: 
+          step = -1
+        elif counter_position == 1:
+          step = 1
+        
         clear_screen()
         current_time = datetime.now().time()
         hour_views = get_view(str(current_time.hour))
         minute_views = get_view(str(current_time.minute))
         second_views = get_view(str(current_time.second))
+        
+        result = combine_views(hour_views, \
+                               views.NUMBER_TO_VIEW["position_square"]\
+                                [counter_position])
+        result = combine_views(result, minute_views)
+        result = combine_views(result, \
+                               views.NUMBER_TO_VIEW["position_square"]\
+                                [counter_position])
+        result = combine_views(result, second_views)  
+        print(result)
+        counter_position += step
+        time.sleep(1)
 
-        if counter % 4 == 0:
-          result = combine_views(hour_views, views.NUMBER_TO_VIEW[":"])
-          result = combine_views(result, minute_views)
-          result = combine_views(result, views.NUMBER_TO_VIEW[":"])
-          result = combine_views(result, second_views)
-          print(result)
-        else:
-          result = combine_views(hour_views, views.NUMBER_TO_VIEW["nothing"])
-          result = combine_views(result, minute_views)
-          result = combine_views(result, views.NUMBER_TO_VIEW["nothing"])
-          result = combine_views(result, second_views)
-          print(result)  
-
-        time.sleep(0.2)
-        counter += 1
-#
-# def print_time(a=two, b=four, d=one, e=zero, c=dot, f=empty):
-#     result = ""
-#     # print( a, b, d, e)
-#     for line_a, line_b, line_c, line_d, line_e, line_f in zip(
-#         a.splitlines(),
-#         b.splitlines(),
-#         c.splitlines(),
-#         d.splitlines(),
-#         e.splitlines(),
-#         f.splitlines(),
-#     ):
-#
-# while True:
-#     pime = datetime.now()
-#     os.system("clear")
-#     counter += 1
-#     print(pime.strftime("%I:%M:%S%p"))
-#     check_time(counter, pime.strftime("%M%S"))
-#
-#     time.sleep(1)

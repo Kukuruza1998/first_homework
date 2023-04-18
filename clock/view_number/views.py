@@ -88,23 +88,60 @@ ZERO = """
   ■■■■■■  
 """
 
-DOTS = """
-    ■■    
-    ■■    
+POSITION_1 = """
           
           
-    ■■    
+          
+          
+          
     ■■    
 """
 
-EMPTY = """
+POSITION_2 = """
           
+          
+          
+          
+    ■■    
+          
+"""
+
+POSITION_3 = """
+          
+          
+          
+    ■■    
+          
+          
+"""
+
+POSITION_4 = """
+          
+          
+    ■■    
+          
+          
+          
+"""
+
+POSITION_5 = """
+          
+    ■■    
+          
+          
+          
+          
+"""
+
+POSITION_6 = """
+    ■■    
           
           
           
           
           
 """
+
 
 NUMBER_TO_VIEW = {
     "1": ONE,
@@ -117,6 +154,12 @@ NUMBER_TO_VIEW = {
     "8": EIGHT,
     "9": NINE,
     "0": ZERO,
-    ":": DOTS,
-    "nothing": EMPTY,
+    "position_square":{
+      1: POSITION_1,
+      2: POSITION_2,
+      3: POSITION_3,
+      4: POSITION_4,
+      5: POSITION_5,
+      6: POSITION_6,
+    }
 }
