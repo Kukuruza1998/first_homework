@@ -25,7 +25,7 @@ def combine_views(first, second):
     result = "\n".join(i for i in combine_numbers)
     return result
 
-if __name__ == '__main__':
+def main():
     counter_position = 1
     while True:
         if counter_position == 6: 
@@ -51,3 +51,5 @@ if __name__ == '__main__':
         counter_position += step
         time.sleep(1)
 
+if __name__ == '__main__':
+    main()
