@@ -62,7 +62,7 @@ def main():
       first_card = check_card_in_deck()
       second_card = check_card_in_deck() 
       print(f"Первой пришла карта номиналом: {first_card}, вторая: {second_card}")
-      if first_card == 1 and second_card == 1:
+      if (first_card == 1 or first_card == 11) and (second_card == 1 or second_card == 11):
         print("Победа, два туза")
         exit 
       else:
