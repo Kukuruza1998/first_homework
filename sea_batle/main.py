@@ -33,8 +33,10 @@ class SeaBattle:
     
     def setup_board(self):
       ships_sizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
+      clear_screen()
       for size in ships_sizes:
           while True:
+              
               print(self)
               print(f"Корабль размером {size}")
               x = int(input('Введите строку: '))
@@ -59,17 +61,24 @@ class SeaBattle:
                 
               elif orientation == 'h':
                     if y + size > self.size:
-                        clear_screen()
                         print("Корабль выходит за границы поля. Попробуйте еще раз.")
                         continue
                     for j in range(y, y+size):
                         if self.is_ship(x, j):
-                            clear_screen()
                             print("Корабль пересекается с другим кораблем. Попробуйте еще раз.")
+                            break
+                        elif self.is_ship(x+1, j) or \
+                              self.is_ship(x+1, j+1) or \
+                                self.is_ship(x+1, j-1) or \
+                                  self.is_ship(x, j+1) or \
+                                    self.is_ship(x-1, j) or \
+                                      self.is_ship(x-1, j-1) or \
+                                        self.is_ship(x-1, j+1) or \
+                                          self.is_ship(x, j-1):
+                            print("Корабль в пределах другого корабля. Попробуйте еще раз.")
                             break
                     else:
                         for j in range(y, y+size):
-                            clear_screen()
                             self.place_ship(x, j)
                         self.ships.append((x, y, size, orientation))
                         break
