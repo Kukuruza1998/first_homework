@@ -95,7 +95,7 @@ class SeaBattle:
         else:
             return True
 
-    def setup_board(self):
+    def add_ship_on_board(self):
         ships_sizes = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
         clear_screen()
         for size in ships_sizes:
@@ -126,9 +126,9 @@ class SeaBattle:
                     print("Выбрано неверное направление")
 
 game = SeaBattle(10)
-game.setup_board()
+game.add_ship_on_board()
 game2 = SeaBattle(10)
-game2.setup_board()
+game2.add_ship_on_board()
 # print(game.is_hit(2, 3)) 
 # print(game.is_miss(5, 5)) 
 
