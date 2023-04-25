@@ -124,9 +124,6 @@ class SeaBattle:
                 else:
                     clear_screen()
                     print("Выбрано неверное направление")
-                  
-
-
 
 game = SeaBattle(10)
 game.setup_board()
