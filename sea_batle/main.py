@@ -152,8 +152,6 @@ ship
 from typing import Tuple, List
 
 
-
-
 class Cell:
     def __init__(self, *, column_index: int, row_index: int) -> None:
         self.ship_placed: bool = False
@@ -166,7 +164,7 @@ class Cell:
 
 
 class Ship:
-    def __init__(self, cells:List[Cell]) -> None:
+    def __init__(self, cells: List[Cell]) -> None:
         self.cells = cells
 
     def is_destroyed(self):
@@ -174,7 +172,7 @@ class Ship:
 
     def is_damaged(self):
         return any([cell.is_damaged for cell in self.cells])
-    
+
     def get_size(self):
         return len(self.cells)
 
@@ -187,7 +185,7 @@ class Board:
         for row_index in range(size):
             row = []
             for column_index in range(size):
-                row.append(Cell(row_index = row_index, column_index = column_index))
+                row.append(Cell(row_index=row_index, column_index=column_index))
             self.grid.append(row)
 
 
@@ -211,17 +209,17 @@ class InputProccesor:
 
     def get_string_input_lower(self, message: str):
         return input(message).lower()
-    
+
     def get_int_input(self, message: str):
         input_message = input(message)
-        if input_message.isdigit() == True:
-            return int(input_message)
+        if input_message.isdigit() is not True:
+            self.get_int_input(self, message)
         else:
-            self.get_int_input(self, message = message)            
-    
+            input_message = int(input_message)
+        return input_message
+
     def get_choice_input(self, message: str, choices: Tuple[str]):
         ...
-        
 
 
 class OutputProccesor:
@@ -231,8 +229,9 @@ class OutputProccesor:
 class Game:
     BOARD_SIZE = 10
     SHIP_SIZES = (4, 3, 3, 2, 2, 2, 1, 1, 1, 1)
+
     def __init__(self) -> None:
-        self.players = [Player(board = Board(self.BOARD_SIZE)) for _ in range(2)]
+        self.players = [Player(board=Board(self.BOARD_SIZE)) for _ in range(2)]
         self.input_proccesor = InputProccesor()
 
     def fill_board(self, player):
@@ -240,8 +239,7 @@ class Game:
 
     def run(self):
         for player in self.players:
-            self.fill_board(player = player)
-
+            self.fill_board(player=player)
 
 
 game = Game()
