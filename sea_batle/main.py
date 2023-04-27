@@ -214,8 +214,7 @@ class Player:
 class Game:
     
     BOARD_SIZE = 10
-    SHIP_SIZES = (4,)
-        # SHIP_SIZES = (4, 3, 3, 2, 2, 2, 1, 1, 1, 1)
+    SHIP_SIZES = (4, 3, 3, 2, 2, 2, 1, 1, 1, 1)
 
     def __init__(self) -> None:
         self.players = [Player(board=Board(self.BOARD_SIZE)) for _ in range(2)]
